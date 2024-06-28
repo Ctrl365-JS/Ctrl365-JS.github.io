@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Complejidad</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <h1>Calculadora de Complejidad</h1>
+    <form id="complexityForm">
+        <table>
+            <thead>
+                <tr>
+                    <th>Requerimiento</th>
+                    <th>5</th>
+                    <th>3</th>
+                    <th>1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cantidad de Pasos/Actividades</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="steps">> 10</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="steps">10 a 30</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="steps">< 30</button></td>
+                </tr>
+                <tr>
+                    <td>Documentación del Proceso</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="documentation">No Documentado</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="documentation">Alguna documentación</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="documentation">Bien documentado</button></td>
+                </tr>
+                <tr>
+                    <td>Basado en reglas</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="rules">No está basado en reglas</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="rules">Basado en algunas reglas</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="rules">Totalmente basado en reglas</button></td>
+                </tr>
+                <tr>
+                    <td>Frecuencia</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="frequency">Ad-Hoc</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="frequency">Mensual/Trimestral</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="frequency">Diario/semanal</button></td>
+                </tr>
+                <tr>
+                    <td>Nivel de Estandarización</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="standardization">No estandarizado</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="standardization">Mix de tareas estándar y no estándar</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="standardization">Muy estándar</button></td>
+                </tr>
+                <tr>
+                    <td>Data (Calidad)</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="dataQuality">Escrita a mano / Campo libre</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="dataQuality">Algunos datos digitalizados / estándar</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="dataQuality">Totalmente digitalizado y estándar</button></td>
+                </tr>
+                <tr>
+                    <td>Modificación de Datos (Frecuencia)</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="dataModification">Alta modificación de datos</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="dataModification">Media modificación de datos</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="dataModification">Poco/nula modificación de datos</button></td>
+                </tr>
+                <tr>
+                    <td>Controles</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="controls">> 6 controles</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="controls">entre 3 y 5 controles</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="controls">< 2 controles</button></td>
+                </tr>
+                <tr>
+                    <td>Volumen</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="volume">Bajo volumen de datos/procesamiento</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="volume">Medio volumen de datos/procesamiento</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="volume">Alto nivel de volumen procesamiento</button></td>
+                </tr>
+                <tr>
+                    <td>Cálculos (fórmulas)</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="calculations">Requerido</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="calculations">Excepcional</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="calculations">No Requerido</button></td>
+                </tr>
+                <tr>
+                    <td>Porcentaje de excepciones</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="exceptions">> 20%</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="exceptions">10 a 19%</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="exceptions">< 10%</button></td>
+                </tr>
+                <tr>
+                    <td>Cantidad de Aplicaciones</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="applications">> 6</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="applications">3 a 5</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="applications">< 3</button></td>
+                </tr>
+                <tr>
+                    <td>Cantidad de Decisiones</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="decisions">> 6</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="decisions">3 a 5</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="decisions">< 3</button></td>
+                </tr>
+                <tr>
+                    <td>Las decisiones del proceso, ¿Se basan en razonamiento humano?</td>
+                    <td><button type="button" class="option-button" data-value="5" data-group="humanDecisions">Sí</button></td>
+                    <td><button type="button" class="option-button" data-value="3" data-group="humanDecisions">Mix</button></td>
+                    <td><button type="button" class="option-button" data-value="1" data-group="humanDecisions">No</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="calculateComplexity()">Calcular Complejidad</button>
+        <div id="result"></div>
+    </form>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
